@@ -2,25 +2,26 @@
 //                  | HEADER FILE USED IN PROJECT |
 //*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
 
-	 #include<fstream.h>
-	 #include<stdio.h>
-	 #include<process.h>
-	 #include<string.h>
-	 #include<conio.h>
-	 #include<dos.h>
-	 #include<iomanip.h>
-	 #include<ctype.h>
+#include<fstream.h>
+#include<stdio.h>
+#include<process.h>
+#include<string.h>
+#include<conio.h>
+#include<dos.h>
+#include<iomanip.h>
+#include<ctype.h>
 
 //*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
 //            | FUNCTIONS USED FOR MOUSE OPERATION|
 //*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
-
-  void showmouse()
-   {    _AX=1;
+void showmouse()
+{    
+	_AX=1;
 	geninterrupt(0x33);
-   }
+}
   void getmouse(int *button,int *x,int *y)
-  {    _AX=3;
+  {    
+  	_AX=3;
 	geninterrupt(0x33);
 	*button=_BX;
 	*x=_CX;
@@ -50,38 +51,42 @@
 	   void modify();
     //*+*+*+|CONSTRUCTOR|+*+*+*
 	   bank()
-	   { ano=0;
-	    bal=0.0;
+	   { 
+	   		ano = 0;
+	    	bal = 0.0;
 	   }
 	};
 
 	void bank :: Getinfo()
 	{
-	  cout<<"\nEnter Details\n";
-	  cout<<"Enter a Account Number of your choice :";
-	  cin>>ano;
-	  cout<<"\nType of Account Current or Saving (C/S) : ";
-	  cin>>atype;
-	  atype=toupper(atype);
-	  cout<< "\n\nNAME Of The Account Holder:- ";
-	  gets(name);
-	  if(name[0]>=97)
-	  name[0]-=32;
-	  for(int i=0;i<=strlen(name);i++)
-	   { if(name[i]==' '&& name[i+1]>=97)
-	     name[i+1]-=32;
-	   }
-	  cout<<"\n\nAccount PASSWORD (min 4 characters):- ";
-	  gets(pass);
-	  if(strlen(pass)<4)
-	  {cout<<"\nPassword should contain atleast 4 characters";
-	  cout<<"\n\nEnter PASSWORD again :";
-	  gets(pass);}
-	  cout<<"\n\nOpening BALANCE Of The Account : Rs.";
-	  cin>>bal;
-	  cout<<"\n\nEnter A UNIQUE CODE To Recover Your Account : ";
-	  gets(unicode);
-	  clrscr();
+		cout<<"\nEnter Details\n";
+	  	cout<<"Enter a Account Number of your choice :";
+	  	cin>>ano;
+					  cout<<"\nType of Account Current or Saving (C/S) : ";
+					  cin>>atype;
+					  atype=toupper(atype);
+					  cout<< "\n\nNAME Of The Account Holder:- ";
+					  gets(name);
+					  if(name[0]>=97)
+					  	name[0]-=32;
+					  for(int i=0;i<=strlen(name);i++)
+					  {
+					   		if(name[i]==' '&& name[i+1]>=97)
+					     		name[i+1]-=32;
+					   }
+					  cout<<"\n\nAccount PASSWORD (min 4 characters):- ";
+					  gets(pass);
+					if(strlen(pass)<4)
+					{
+						cout<<"\nPassword should contain atleast 4 characters";
+					  	cout<<"\n\nEnter PASSWORD again :";
+						gets(pass);
+					}
+					cout<<"\n\nOpening BALANCE Of The Account : Rs.";
+					cin>>bal;
+					cout<<"\n\nEnter A UNIQUE CODE To Recover Your Account : ";
+					gets(unicode);
+					clrscr();
 	}
 	void bank :: Dispinfo()
 	{
